@@ -204,6 +204,7 @@ namespace FileJarvis
                     Console.WriteLine("2-Создание Папки или Файла");
                     Console.WriteLine("3-Удалить Папку или Фаил");
                     Console.WriteLine("4-Прочитать Фаил или изменить");
+                    Console.WriteLine("5-Изменить формат");
                     Console.WriteLine("Back");
                     Console.WriteLine("Exit");
                     Console.WriteLine();
@@ -337,7 +338,7 @@ namespace FileJarvis
                             switch (select4)
                             {
                                 case "1":
-                                    Console.WriteLine("Введите путь файла");
+                                    Console.WriteLine("Введите путь к файлу");
                                     string WayReadFile = Console.ReadLine();
                                     Console.WriteLine("Введите Имя файла");
                                     string ReadFileName = Console.ReadLine();
@@ -347,13 +348,34 @@ namespace FileJarvis
                                     Console.ReadKey();
                                     
                                     break;
-                                
+                                    
                                 case "2":
+                                    Console.WriteLine("Открыть фаил для изменения ");
+                                    Console.WriteLine("Введите путь файла");
+                                    string WayEditFile = Console.ReadLine();
+                                    Console.WriteLine("Ввелите имя файла");
+                                    string EditFileName = Console.ReadLine();
+
+                                    string EditFilePath = Path.Combine(WayEditFile, EditFileName);
+                                    
+                                    
                                     
                                     break;
                             }
                             break;
                         
+                        case "5":
+                            Console.WriteLine("Конвертация Файла");
+                            Console.WriteLine("Введите путь к файлу");
+                            string WayFormatFile = Console.ReadLine();
+                            Console.WriteLine("Введите имя файла");
+                            string FormatFileName = Console.ReadLine();
+                            Console.WriteLine("Введите формат в который новертировать фаил");
+                            string Form1 = Console.ReadLine();
+                            string FormatPath = Path.Combine(WayFormatFile, FormatFileName);
+                            File.Move(FormatPath,FormatPath.Replace(Path.GetExtension(FormatPath),Form1));
+                            Console.WriteLine("Фаил успешно конвертирован");
+                            break;
                         case "Back":
                             MainMenu();
                             break;
